@@ -90,10 +90,6 @@ app.get('/logout', (req, res) => {
   `?client_id=${encodeURIComponent(clientID)}` +
   `&returnTo=${encodeURIComponent(redirectTo)}`;
 
-  console.log('===========================');
-  console.log('redirectTo', redirectTo);
-  console.log('logoutUrl', logoutUrl);
-  console.log('===========================');
   res.redirect(logoutUrl)
 })
 
