@@ -84,7 +84,7 @@ app.get('/callback', (req, res) => {
 
 app.get('/logout', (req, res) => {
 
-  const redirectTo = req.protocol + '://' + req.get('host');
+  const redirectTo = (process.env.NODE_ENV === 'production' ? 'https' : req.protocol) + '://' + req.get('host');
 
   const logoutUrl = `${domain}/logout` +
   `?client_id=${encodeURIComponent(clientID)}` +
