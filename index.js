@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request')
 const jwt     = require('jsonwebtoken')
+const path    = require('path')
 
 require('dotenv').config()
 
@@ -9,8 +10,6 @@ const domain = process.env.AUTH0_DOMAIN;
 const clientID = process.env.AUTH0_CLIENT_ID;
 const clientSecret = process.env.AUTH0_CLIENT_SECRET;
 const callbackURL = process.env.AUTH0_CALLBACK_URL;
-
-
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,8 +21,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-  // generate authorize url
-
   const url = `${domain}/authorize` +
     `?response_type=code` +
     `&audience=${encodeURIComponent('urn:worldmappers')}` +
